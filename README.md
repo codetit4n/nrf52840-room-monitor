@@ -27,3 +27,29 @@ hardware registers.
 ## Progress
 
 Development milestones and implementation status are tracked in [PROGRESS.md](./PROGRESS.md).
+
+### Commands
+
+**Clean**
+
+```sh
+make clean
+```
+
+**Recover**
+
+```sh
+nrfutil device recover
+```
+
+**Flash**
+
+```sh
+nrfutil device program --firmware build/room-monitor.hex --options chip_erase_mode=ERASE_ALL,verify=VERIFY_READ,reset=RESET_SYSTEM
+```
+
+**UARTE Output**
+
+```bash
+minicom -D /dev/ttyACM0 -b 1000000
+```
