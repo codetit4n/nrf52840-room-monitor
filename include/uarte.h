@@ -1,6 +1,29 @@
 #pragma once
 
-#include <stddef.h>
+#include "board.h"
+
+#define NRF_UARTE0_BASE 0x40002000UL
+#define NRF_P0_BASE 0x50000000UL
+
+#define UARTE0_ENABLE REG32(NRF_UARTE0_BASE + 0x500)
+#define UARTE0_CONFIG REG32(NRF_UARTE0_BASE + 0x56C)
+#define UARTE0_BAUDRATE REG32(NRF_UARTE0_BASE + 0x524)
+#define UARTE0_PSEL_TXD REG32(NRF_UARTE0_BASE + 0x50C)
+#define UARTE0_PSEL_RXD REG32(NRF_UARTE0_BASE + 0x514)
+
+#define UARTE0_TXD_PTR REG32(NRF_UARTE0_BASE + 0x544)
+#define UARTE0_TXD_MAXCNT REG32(NRF_UARTE0_BASE + 0x548)
+
+#define UARTE0_TASKS_STARTTX REG32(NRF_UARTE0_BASE + 0x008)
+
+#define UARTE0_EVENTS_ENDTX REG32(NRF_UARTE0_BASE + 0x120)
+#define UARTE0_EVENTS_TXSTOPPED REG32(NRF_UARTE0_BASE + 0x158)
+
+#define UART_TX_BUF_SIZE 256
+
+// DK: UARTE0 default pins routed to J-Link VCOM
+#define TX_PIN 6 // P0.06: UARTE0 TXD -> DK J-Link VCOM RX
+#define RX_PIN 8 // P0.08: UARTE0 RXD <- DK J-Link VCOM TX (unused here)
 
 void init_uarte0(void);
 void uarte_write(const char *text, size_t len);

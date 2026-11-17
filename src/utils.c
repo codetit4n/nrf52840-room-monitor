@@ -77,11 +77,10 @@ void delay_s(uint32_t s) {
         sizeof("WARNING: delay_s() can't be more than 4294 s (~71 min)\r\n") -
             1);
   }
-
   start_timer();
   uint32_t ctr = 0;
   do {
     ctr = read_ctr();
-  } while (ctr < s * 1000000);
+  } while (ctr < s * 1000000u);
   stop_timer();
 }

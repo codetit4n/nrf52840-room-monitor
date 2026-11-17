@@ -9,6 +9,7 @@
 
 - [x] Implement TIMER initialization and start/stop functions
 - [x] Implement delay function using TIMER
+- [x] Test TIMER delay blocking
 
 ## 3. I²C (TWIM) Driver
 
